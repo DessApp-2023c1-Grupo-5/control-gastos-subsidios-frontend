@@ -4,7 +4,7 @@ import { presupuestoPrueba } from '../constants/constants';
 export async function getProyectsForAdmin() {
   const url = 'http://localhost:3001/api/proyectos/allProyects';
   const response = await fetch(url, {
-    method: 'GET', // *GET, POST, PUT, DELETE, etc.
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, *cors, same-origin
     cache: 'no-cache', // *default, no-cache, reload, force-cache
     credentials: 'same-origin', // include, *same-origin, omit
