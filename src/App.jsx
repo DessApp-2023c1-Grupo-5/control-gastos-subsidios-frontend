@@ -58,12 +58,12 @@ export default function App() {
       const role = sessionStorage.getItem("role");
       setRol(role);
       //Fix to first path to admin
-      if(role === 'admin' && !window.location.href.endsWith('/admin/proyects'))
+      if (role === 'admin' && !window.location.href.endsWith('/admin/proyects'))
         window.location.href = '/admin/proyects'
       //Fix to first path to user
-      if(role === 'user' && window.location.href.includes('/admin'))
+      if (role === 'user' && window.location.href.includes('/admin'))
         window.location.href = '/'
-      
+
       setUserName(usuario);
       loggedIn === "true" ? setLoggedIn(true) : setLoggedIn(false);
       setInit(true);
@@ -98,6 +98,7 @@ export default function App() {
                         <Route path="/admin/createProyect" component={CreateProyect} />
                         <Route path="/admin/createUser" component={CreateUser} />
                         <Route path="/admin/proyects" component={ProyectsLists} />
+                        <Route path="/admin/proyectView" component={VistaProyecto} />
                       </Switch>
                     </div>
                   </div>
