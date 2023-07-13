@@ -53,6 +53,62 @@ export default function CardMontos({ totalGastos, totalPresupuesto }) {
             {formatPrice(monto)}
           </span>
         </CardContent>
+      </Card > 
+      <Card className={$.root2}>
+        <CardContent>
+          <Typography
+            variant="h5"
+            component="h2"
+            className={$.typography}
+          >
+
+            <LocalAtm className={$.prepTotal} />Remanente:
+          </Typography>
+          <span
+            variant="h5"
+            className={$.typography}
+          >
+            {10000}
+          </span>
+        </CardContent>
+      </Card >
+
+      <Card className={$.root2}>
+        <CardContent>
+          <Typography
+            variant="h5"
+            component="h2"
+            className={$.typography}
+          >
+
+            <LocalAtm className={$.prepTotal} />Total Aprobado Por Rubro:
+          </Typography>
+          <span
+            variant="h5"
+            className={$.typography}
+          >
+            {50000}
+          </span>
+        </CardContent>
+      </Card >
+
+      <Card className={$.root2}>
+        <CardContent>
+          <Typography
+            variant="h5"
+            component="h2"
+            className={$.typography}
+          >
+
+            <LocalAtm className={$.prepTotal} />Total Pendiente Por Rubro:
+          </Typography>
+          <span
+            variant="h5"
+            className={$.typography}
+          >
+            {50000}
+          </span>
+        </CardContent>
       </Card >
       <Card className={$.root2}>
         <CardContent>
