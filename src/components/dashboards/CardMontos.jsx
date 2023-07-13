@@ -54,7 +54,7 @@ export default function CardMontos({ totalGastos, totalPresupuesto }) {
           </span>
         </CardContent>
       </Card > 
-      <Card className={$.root2}>
+      <Card className={$.root3}>
         <CardContent>
           <Typography
             variant="h5"
@@ -68,12 +68,12 @@ export default function CardMontos({ totalGastos, totalPresupuesto }) {
             variant="h5"
             className={$.typography}
           >
-            {10000}
+            {1000000 - (50000+20000)}
           </span>
         </CardContent>
       </Card >
 
-      <Card className={$.root2}>
+      <Card className={$.root3}>
         <CardContent>
           <Typography
             variant="h5"
@@ -92,7 +92,7 @@ export default function CardMontos({ totalGastos, totalPresupuesto }) {
         </CardContent>
       </Card >
 
-      <Card className={$.root2}>
+      <Card className={$.root3}>
         <CardContent>
           <Typography
             variant="h5"
@@ -106,7 +106,7 @@ export default function CardMontos({ totalGastos, totalPresupuesto }) {
             variant="h5"
             className={$.typography}
           >
-            {50000}
+            {20000}
           </span>
         </CardContent>
       </Card >
@@ -166,6 +166,18 @@ const useStyles = makeStyles({
     marginBottom: '1.5rem',
     margin: '0.5rem',
     background: '#118ab2',
+    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
+    borderRadius: '8px',
+
+
+  },
+  root3: {
+    display: 'inline-flex',
+    alignContent: 'center',
+    justifyContent: 'space-between',
+    marginBottom: '1.5rem',
+    margin: '0.5rem',
+    background: '#574080',
     boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
     borderRadius: '8px',
 
