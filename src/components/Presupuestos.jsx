@@ -5,40 +5,39 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Divider from '@material-ui/core/Divider';
 import { getPresupuesto } from '../services/presupuestos.js';
-import { getComprasByProyecto } from '../services/compras.js';
+import { getAllGastosPorRubro, getComprasByProyecto } from '../services/compras.js';
 import { useState, useEffect } from 'react';
 import Alert from '@material-ui/lab/Alert';
 import TortaPrincipal from './dashboards/TortaPrincipal';
 import CardMontos from './dashboards/CardMontos';
-import { getProyectoById } from '../services/proyectos.js';
 
 import Grid from '@material-ui/core/Grid';
-import { calculateTotalExpenses } from '../utils/presupuestos';
+import { calculateTotalExpenses, combinarPresupuestoYRubros } from '../utils/presupuestos';
 
 export const Presupuestos = ({ idProyecto }) => {
   const $ = useStyles();
 
-  const [proyecto, setProyecto] = useState(null);
   const [presupuesto, setPresupuesto] = useState(null);
   const [comprasRealizadas, setComprasRealizadas] = useState(null);
   const [totalGastos, setTotalGastos] = useState(null);
+  const [gastosPorRubro, setGastosPorRubro] = useState(null);
 
-  console.log(proyecto)
+  console.log(gastosPorRubro)
 
   useEffect(() => {
     let isMounted = true;
     async function fetchProyectos() {
       if (idProyecto)
         try {
-          const proyecto = await getProyectoById(idProyecto); //Tiene que ser por ID la busqueda
           const presupuesto = await getPresupuesto();
           const compras = await getComprasByProyecto(idProyecto);
           const gastos = calculateTotalExpenses(compras);
+          const gastosPorRubro = await getAllGastosPorRubro(idProyecto)
           if (isMounted) {
-            setProyecto(proyecto[0]);
             setTotalGastos(gastos);
             setComprasRealizadas(comprasRealizadas);
             setPresupuesto(presupuesto);
+            setGastosPorRubro(combinarPresupuestoYRubros(presupuesto, gastosPorRubro))
           }
         } catch (err) {
           console.log('[DatosGenerales Component] ERROR : ' + err);
@@ -59,6 +58,7 @@ export const Presupuestos = ({ idProyecto }) => {
   const rendering = () => {
     return (
       <>
+
         <div className={$.root}>
           <Grid
             container

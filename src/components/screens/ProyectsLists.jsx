@@ -39,22 +39,22 @@ const StyledTableHead = withStyles(() => ({
   },
 }))(TableRow);
 
-export const ProyectsList = ({ setIdProyecto }) => {
+export const ProyectsList = () => {
   const $ = useStyles();
 
-  const [proyects,setProyects] = useState([]);
+  const [proyects, setProyects] = useState([]);
   const handleSelectProyect = (id) => {
     sessionStorage.setItem('idProyecto', id);
     //setIdProyecto(id);
   };
-  useEffect( () => {
-    async function getProyects(){
-        const proyectos = await getProyectsForAdmin();
+  useEffect(() => {
+    async function getProyects() {
+      const proyectos = await getProyectsForAdmin();
 
-        setProyects(proyectos);
+      setProyects(proyectos);
     }
     getProyects();
-  },[]) //only de first render
+  }, []) //only de first render
 
   return (
     <>
@@ -68,21 +68,21 @@ export const ProyectsList = ({ setIdProyecto }) => {
             </StyledTableCell>
             <StyledTableCell align="center" className={$.textColor}>
               Fecha de Inicio
-            </StyledTableCell>   
-              <StyledTableCell align="center" className={$.textColor}>
+            </StyledTableCell>
+            <StyledTableCell align="center" className={$.textColor}>
               Solicitudes de compras
             </StyledTableCell>
           </StyledTableHead>
           <TableBody>
-          {proyects.map((proyecto) => (
-          <StyledTableRow key={proyecto.id}>
-           <StyledTableCell
-             scope="row"
-             onClick={() => handleSelectProyect(proyecto.id)}
-             component={Link}
-             to={'/admin/proyectView'}//edit cuando se cree la vista de proyecto singular con compra
-           >
-             {proyecto.titulo}
+            {proyects.map((proyecto) => (
+              <StyledTableRow key={proyecto.id}>
+                <StyledTableCell
+                  scope="row"
+                  onClick={() => handleSelectProyect(proyecto.id)}
+                  component={Link}
+                  to={'/admin/proyectView'}//edit cuando se cree la vista de proyecto singular con compra
+                >
+                  {proyecto.titulo}
                 </StyledTableCell>
                 <StyledTableCell align="center">
                   {proyecto.director}
