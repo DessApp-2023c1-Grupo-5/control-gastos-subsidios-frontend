@@ -15,10 +15,13 @@ export default function CardMontos({ totalGastos, totalPresupuesto }) {
 
   const monto = montoDisponible(totalPresupuesto, totalGastos)
   const ejecucion = nivelDeEjecucion(totalPresupuesto, totalGastos);
+  const remanente = totalPresupuesto - (100 + 50);
 
 
   return (
     <div className={$.textContainer}>
+
+
       <Card className={$.root}>
         <CardContent className={$.content}>
           <Typography
@@ -36,6 +39,8 @@ export default function CardMontos({ totalGastos, totalPresupuesto }) {
           </span>
         </CardContent>
       </Card >
+
+
       <Card className={$.root1}>
         <CardContent>
           <Typography
@@ -54,6 +59,8 @@ export default function CardMontos({ totalGastos, totalPresupuesto }) {
           </span>
         </CardContent>
       </Card >
+
+
       <Card className={$.root2}>
         <CardContent>
           <Typography
@@ -68,6 +75,25 @@ export default function CardMontos({ totalGastos, totalPresupuesto }) {
             className={$.typography}
           >
             {ejecucion}
+          </span>
+        </CardContent>
+      </Card >
+
+      <Card className={$.root3}>
+        <CardContent>
+          <Typography
+            variant="h5"
+            component="h2"
+            className={$.typography}
+          >
+
+            <LocalAtm className={$.prepTotal} />Remanente:
+          </Typography>
+          <span
+            variant="h5"
+            className={$.typography}
+          >
+            {remanente}
           </span>
         </CardContent>
       </Card >
@@ -110,6 +136,19 @@ const useStyles = makeStyles({
     marginBottom: '1.5rem',
     margin: '0.5rem',
     background: '#118ab2',
+    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
+    borderRadius: '8px',
+
+
+  },
+
+  root3: {
+    display: 'inline-flex',
+    alignContent: 'center',
+    justifyContent: 'space-between',
+    marginBottom: '1.5rem',
+    margin: '0.5rem',
+    background: '#574080',
     boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
     borderRadius: '8px',
 

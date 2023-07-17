@@ -1,4 +1,7 @@
 import { presupuestoPrueba } from '../constants/constants';
+import { presupuestoPruebaPendiente } from '../constants/constants';
+
+import { presupuestoPruebaAprobado } from '../constants/constants';
 
 //SEPARAR LOS SERVICIOS DEL ADMIN Y LOS DEL INVESTIGADOR (ARMAR DOS DIRECTORIOS SEPARADOS UNO PARA CADA UNO DONDE TENGAN SUS COMPONENTES Y SERVICIOS)
 export async function getProyectsForAdmin() {
@@ -53,6 +56,13 @@ export async function getProyectoById(idProyecto) {
 
 export function getPresupuesto() {
   return Promise.resolve(presupuestoPrueba);
+}
+export function getPendiente() {
+  return Promise.resolve(presupuestoPruebaPendiente);
+}
+
+export function getAprobado() {
+  return Promise.resolve(presupuestoPruebaAprobado);
 }
 
 export async function createProyecto(body) {

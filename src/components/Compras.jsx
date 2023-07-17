@@ -86,25 +86,25 @@ export const Compras = ({ idProyecto }) => {
             <Table aria-label="customized table">
               <StyledTableHead>
                 <StyledTableRow>
-                <StyledTableCell className={$.textColor}>Rubro</StyledTableCell>
-                <StyledTableCell align="left" className={$.textColor}>
-                  Subrubro
-                </StyledTableCell>
-                <StyledTableCell align="center" className={$.textColor}>
-                  Número de compra
-                </StyledTableCell>
-                <StyledTableCell align="left" className={$.textColor}>
-                  Proveedor
-                </StyledTableCell>
-                <StyledTableCell align="left" className={$.textColor}>
-                  Estado
-                </StyledTableCell>
-                <StyledTableCell align="left" className={$.textColor}>
-                  Nro. factura
-                </StyledTableCell>
-                <StyledTableCell align="right" className={$.textColor}>
-                  Monto
-                </StyledTableCell>
+                  <StyledTableCell className={$.textColor}>Rubro</StyledTableCell>
+                  <StyledTableCell align="left" className={$.textColor}>
+                    Subrubro
+                  </StyledTableCell>
+                  <StyledTableCell align="center" className={$.textColor}>
+                    Número de compra
+                  </StyledTableCell>
+                  <StyledTableCell align="left" className={$.textColor}>
+                    Proveedor
+                  </StyledTableCell>
+                  <StyledTableCell align="left" className={$.textColor}>
+                    Estado
+                  </StyledTableCell>
+                  <StyledTableCell align="left" className={$.textColor}>
+                    Nro. factura
+                  </StyledTableCell>
+                  <StyledTableCell align="right" className={$.textColor}>
+                    Monto
+                  </StyledTableCell>
                 </StyledTableRow>
               </StyledTableHead>
               <TableBody>
@@ -135,25 +135,25 @@ export const Compras = ({ idProyecto }) => {
                 ))}
               </TableBody>
               <TableBody>
-              <StyledTableRow>
-                {[0, 1, 2, 3, 4].map((key) => (
+                <StyledTableRow>
+                  {[0, 1, 2, 3, 4].map((key) => (
+                    <StyledTableCell
+                      key={key}
+                      style={{ backgroundColor: '#E5E9F0' }}
+                    />
+                  ))}
                   <StyledTableCell
-                    key={key}
-                    style={{ backgroundColor: '#E5E9F0' }}
-                  />
-                ))}
-                <StyledTableCell
-                  align="left"
-                  style={{ fontWeight: 'bold', backgroundColor: '#E5E9F0' }}
-                >
-                  TOTAL
-                </StyledTableCell>
-                <StyledTableCell
-                  align="right"
-                  style={{ fontWeight: 'bold', backgroundColor: '#E5E9F0' }}
-                >
-                  {totalGastos()}
-                </StyledTableCell>
+                    align="left"
+                    style={{ fontWeight: 'bold', backgroundColor: '#E5E9F0' }}
+                  >
+                    TOTAL
+                  </StyledTableCell>
+                  <StyledTableCell
+                    align="right"
+                    style={{ fontWeight: 'bold', backgroundColor: '#E5E9F0' }}
+                  >
+                    {totalGastos()}
+                  </StyledTableCell>
                 </StyledTableRow>
               </TableBody>
             </Table>

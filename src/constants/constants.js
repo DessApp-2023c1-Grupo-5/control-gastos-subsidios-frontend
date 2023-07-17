@@ -107,7 +107,35 @@ export const presupuestoPrueba = {
   equipamiento: 200000,
   tecnico: 200000,
   administracion: 200000,
-  total: 1000000,
+  total: 5000000,
+};
+
+export const presupuestoPruebaPendiente = {
+  tipo: 'Pendiente',
+  fechaInicio: '19/09/2021',
+  fechaFin: '28/09/2022',
+  insumos: 100000,
+  bibliografia: 100000,
+  publicaciones: 100000,
+  viaticos: 100000,
+  equipamiento: 200000,
+  tecnico: 200000,
+  administracion: 200000,
+  total: 5000000,
+};
+
+export const presupuestoPruebaAprobado = {
+  tipo: 'Total Aprobado',
+  fechaInicio: '14/09/2021',
+  fechaFin: '12/09/2022',
+  insumos: 100000,
+  bibliografia: 100000,
+  publicaciones: 100000,
+  viaticos: 100000,
+  equipamiento: 200000,
+  tecnico: 200000,
+  administracion: 200000,
+  total: 5000000,
 };
 
 export const reformulacionPrueba = {
@@ -197,6 +225,7 @@ export const proveedoresRegistrados = [
 
 export const rubros = [
   'insumos',
+  'insumosGastos',
   'bibliografia',
   'publicaciones',
   'viaticos',

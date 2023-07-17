@@ -13,11 +13,11 @@ const rubros = [
   { id: 'tipo', label: 'Tipo' },
   { id: 'insumos', label: 'Insumos' },
   { id: 'bibliografia', label: 'Bibliografía' },
-  { id: 'publicaciones',label: 'Publicación',},
+  { id: 'publicaciones', label: 'Publicación', },
   { id: 'viaticos', label: 'Viáticos' },
   { id: 'equipamiento', label: 'Equipamiento' },
   { id: 'tecnico', label: 'Servicios Técnicos' },
-  { id: 'administracion',label: 'Administración'},
+  { id: 'administracion', label: 'Administración' },
   { id: 'total', label: 'Total' },
 ];
 
@@ -31,8 +31,13 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Tabla({ presupuesto }) {
+export default function Tabla({ presupuesto, presupuestoPendiente, presupuestoAprobado }) {
+  // console.log(presupuestoPendiente + "pendiente123")
+  //console.log(presupuesto + "presupuesto45");
+  //console.log(presupuestoAprobado + "aprobado233");
+
   const classes = useStyles();
+
   const datosAConsumir = (({
     tipo,
     insumos,
@@ -54,41 +59,116 @@ export default function Tabla({ presupuesto }) {
     administracion,
     total,
   }))(presupuesto);
-  
+
+  const datosAConsumir2 = (({
+    tipo,
+    insumos,
+    bibliografia,
+    publicaciones,
+    viaticos,
+    equipamiento,
+    tecnico,
+    administracion,
+    total,
+  }) => ({
+    tipo,
+    insumos,
+    bibliografia,
+    publicaciones,
+    viaticos,
+    equipamiento,
+    tecnico,
+    administracion,
+    total,
+  }))(presupuestoPendiente);
+  const datosAConsumir3 = (({
+
+    tipo,
+    insumos,
+    bibliografia,
+    publicaciones,
+    viaticos,
+    equipamiento,
+    tecnico,
+    administracion,
+    total,
+  }) => ({
+    tipo,
+    insumos,
+    bibliografia,
+    publicaciones,
+    viaticos,
+    equipamiento,
+    tecnico,
+    administracion,
+    total,
+  }))(presupuestoAprobado);
+
+
   return (
     <>
-    <Paper className={classes.root}>
-      <TableContainer className={classes.container}>
-        <Table stickyHeader aria-label="sticky table">
-          <TableHead>
-            <TableRow>
-              {rubros.map((column) => (
-                <TableCell
-                  key={column.id}
-                  align={column.align}
-                  style={{ minWidth: 100 }}
-                >
-                  {column.label}
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-            <TableBody> 
-                <TableRow hover role="checkbox" tabIndex={-1}>
-                  {Object.entries(datosAConsumir).map( (key,idx) => {
-                    const clave = key[0];
-                    const value = key[1];
-                    return (
-                      <TableCell key={idx}>
-                        { clave === "tipo" ? value : formatPrice(value??0) }
-                      </TableCell>
-                    );
-                  })}
-                </TableRow>
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Paper> 
-     </>
+      <Paper className={classes.root}>
+        <TableContainer className={classes.container}>
+          <Table stickyHeader aria-label="sticky table">
+            <TableHead>
+              <TableRow>
+                {rubros.map((column) => (
+                  <TableCell
+                    key={column.id}
+                    align={column.align}
+                    style={{ minWidth: 100 }}
+                  >
+                    {column.label}
+                  </TableCell>
+                ))}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <TableRow hover role="checkbox" tabIndex={-1}>
+                {Object.entries(datosAConsumir).map((key, idx) => {
+                  const clave = key[0];
+
+                  const value = key[1];
+                  return (
+                    <TableCell key={idx}>
+                      {clave === "tipo" ? value : formatPrice(value ?? 0)}
+
+                    </TableCell>
+                  );
+                })}
+              </TableRow>
+              <TableRow hover role="checkbox" tabIndex={-1}>
+
+                {Object.entries(datosAConsumir2).map((key, idx) => {
+                  const clave = key[0];
+
+                  const value = key[1];
+                  return (
+                    <TableCell key={idx}>
+                      {clave === "tipo" ? value : formatPrice(value ?? 0)}
+
+                    </TableCell>
+                  );
+                })}
+              </TableRow>
+              <TableRow hover role="checkbox" tabIndex={-1}>
+
+                {Object.entries(datosAConsumir3).map((key, idx) => {
+                  const clave = key[0];
+
+                  const value = key[1];
+                  return (
+                    <TableCell key={idx}>
+                      {clave === "tipo" ? value : formatPrice(value ?? 0)}
+
+                    </TableCell>
+                  );
+                })}
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Paper>
+    </>
   );
 }
