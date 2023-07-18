@@ -74,7 +74,7 @@ export default function CardMontos({ totalGastos, totalPresupuesto }) {
             variant="h5"
             className={$.typography}
           >
-            {ejecucion}
+            {ejecucion + " %"}
           </span>
         </CardContent>
       </Card >

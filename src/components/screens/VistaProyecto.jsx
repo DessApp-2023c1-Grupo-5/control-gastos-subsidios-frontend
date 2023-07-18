@@ -8,7 +8,7 @@ import Divider from '@material-ui/core/Divider';
 //import PopUpCompras from './PopUpCompras';
 import { getComprasByProyecto } from '../../services/compras';
 import { getProyectoById } from '../../services/proyectos';
-import { formatPrice, formatDate, formatYear} from '../../utils/validaciones';
+import { formatPrice, formatDate, formatYear } from '../../utils/validaciones';
 import {
 
     Table,
@@ -23,10 +23,10 @@ import {
 //import { Compras } from './Compras';
 import { Link } from 'react-router-dom';
 
-export const VistaProyecto = ({ idProyecto }) => {
+export const VistaProyecto = () => {
 
 
-    
+
     const [proyecto, setProyecto] = useState(null);
     // const userName = sessionStorage.getItem("username");
     //const idProyecto = sessionStorage.getItem("idProyecto");
@@ -41,13 +41,13 @@ export const VistaProyecto = ({ idProyecto }) => {
         sessionStorage.setItem('idCompra', id);
         sessionStorage.setItem('tituloProyecto', proyecto.titulo)
         //setIdProyecto(id);
-      };
+    };
     //const handleOpen = () => {
-     //   setOpen(true);
+    //   setOpen(true);
     //};
 
     //const handleClose = () => {
-      //  setOpen(false);
+    //  setOpen(false);
     //};
 
     //API Call
@@ -63,7 +63,7 @@ export const VistaProyecto = ({ idProyecto }) => {
         }
         if (newCompra) fetchCompra();
         setNewCompra(false);
-    }, [newCompra]);    
+    }, [newCompra]);
     useEffect(() => {
         async function fetchUsuarios() {
             try {
@@ -209,54 +209,54 @@ export const VistaProyecto = ({ idProyecto }) => {
         return (
             <>
 
-            <TableContainer className={$.container} component={Paper}>
-              <Table aria-label="customized table">
-                <StyledTableHead>
-                  <StyledTableCell className={$.textColor}>N* Factura</StyledTableCell>
-                  <StyledTableCell align="center" className={$.textColor}>
-                    Nombre 
-                  </StyledTableCell>
-                  <StyledTableCell align="center" className={$.textColor}>
-                    Monto
-                  </StyledTableCell>
-                  <StyledTableCell align="center" className={$.textColor}>
-                    Estado
-                  </StyledTableCell>
-                  <StyledTableCell align="center" className={$.textColor}>
-                    Rubro
-                  </StyledTableCell>    
-                </StyledTableHead>
-                <TableBody>
-                {compras.map((compras) => (
-                <StyledTableRow key={compras.id}>
-                 <StyledTableCell
-                    scope="row"
-                    onClick={() => handleSelectCompras(compras.id)}
-                    component={Link}
-                    to={'/admin/proyectView/compra'}//edit cuando se cree la vista de compra singular 
-                            >
-                   {compras.factura}
-                      </StyledTableCell>
-                      <StyledTableCell align="center">
-                        {compras.nombre}
-                      </StyledTableCell>
-                      <StyledTableCell align="center">
-                      {formatPrice(compras.monto)}
-                      </StyledTableCell> 
-                       <StyledTableCell align="center">
-                      {compras.estado}
-                      </StyledTableCell>     
-                       <StyledTableCell align="center">
-                      {compras.rubro}
-                      </StyledTableCell>
-                    </StyledTableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </>
-          );
-      };
+                <TableContainer className={$.container} component={Paper}>
+                    <Table aria-label="customized table">
+                        <StyledTableHead>
+                            <StyledTableCell className={$.textColor}>N* Factura</StyledTableCell>
+                            <StyledTableCell align="center" className={$.textColor}>
+                                Nombre
+                            </StyledTableCell>
+                            <StyledTableCell align="center" className={$.textColor}>
+                                Monto
+                            </StyledTableCell>
+                            <StyledTableCell align="center" className={$.textColor}>
+                                Estado
+                            </StyledTableCell>
+                            <StyledTableCell align="center" className={$.textColor}>
+                                Rubro
+                            </StyledTableCell>
+                        </StyledTableHead>
+                        <TableBody>
+                            {compras.map((compras) => (
+                                <StyledTableRow key={compras.id}>
+                                    <StyledTableCell
+                                        scope="row"
+                                        onClick={() => handleSelectCompras(compras.id)}
+                                        component={Link}
+                                        to={'/admin/proyectView/compra'}//edit cuando se cree la vista de compra singular 
+                                    >
+                                        {compras.factura}
+                                    </StyledTableCell>
+                                    <StyledTableCell align="center">
+                                        {compras.nombre}
+                                    </StyledTableCell>
+                                    <StyledTableCell align="center">
+                                        {formatPrice(compras.monto)}
+                                    </StyledTableCell>
+                                    <StyledTableCell align="center">
+                                        {compras.estado}
+                                    </StyledTableCell>
+                                    <StyledTableCell align="center">
+                                        {compras.rubro}
+                                    </StyledTableCell>
+                                </StyledTableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            </>
+        );
+    };
 
     const rendering = () => {
         return (
@@ -270,7 +270,7 @@ export const VistaProyecto = ({ idProyecto }) => {
                 </div>
             </>
         );
-    
+
     };
 
     const rendering1 = () => {
@@ -281,11 +281,11 @@ export const VistaProyecto = ({ idProyecto }) => {
                     <CardContent>
                         <DatosList1 />
                     </CardContent>
-                  
+
                 </div>
             </>
         );
-    
+
     };
 
 

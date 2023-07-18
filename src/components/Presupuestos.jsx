@@ -12,7 +12,8 @@ import { getPendiente } from '../services/presupuestos.js';
 import { getAprobado } from '../services/presupuestos.js';
 
 
-import { getComprasByProyecto } from '../services/compras.js';
+import { getAllGastosPorRubro, getComprasByProyecto } from '../services/compras.js';
+
 import { useState, useEffect } from 'react';
 import Alert from '@material-ui/lab/Alert';
 import TortaPrincipal from './dashboards/TortaPrincipal';
@@ -20,13 +21,13 @@ import CardMontos from './dashboards/CardMontos';
 import { getProyectoById } from '../services/proyectos.js';
 import Tabla from './dashboards/Tabla';
 
+
 import Grid from '@material-ui/core/Grid';
-import { calculateTotalExpenses } from '../utils/presupuestos';
+import { calculateTotalExpenses, combinarPresupuestoYRubros } from '../utils/presupuestos';
 
 export const Presupuestos = ({ idProyecto }) => {
   const $ = useStyles();
 
-  const [proyecto, setProyecto] = useState(null);
   const [presupuesto, setPresupuesto] = useState(null);
 
 
@@ -36,8 +37,9 @@ export const Presupuestos = ({ idProyecto }) => {
 
   const [comprasRealizadas, setComprasRealizadas] = useState(null);
   const [totalGastos, setTotalGastos] = useState(null);
+  const [gastosPorRubro, setGastosPorRubro] = useState(null);
 
-  console.log(proyecto)
+  console.log(gastosPorRubro)
 
   useEffect(() => {
     let isMounted = true;
@@ -45,6 +47,8 @@ export const Presupuestos = ({ idProyecto }) => {
       if (idProyecto)
         try {
           const proyecto = await getProyectoById(idProyecto); //Tiene que ser por ID la busqueda
+
+
 
 
           const presupuesto = await getPresupuesto();
@@ -55,17 +59,14 @@ export const Presupuestos = ({ idProyecto }) => {
 
           const compras = await getComprasByProyecto(idProyecto);
           const gastos = calculateTotalExpenses(compras);
+          const gastosPorRubro = await getAllGastosPorRubro(idProyecto);
           if (isMounted) {
-            setProyecto(proyecto[0]);
             setTotalGastos(gastos);
             setComprasRealizadas(comprasRealizadas);
             setPresupuesto(presupuesto);
-
             setPresupuestoPendiente(presupuestoPendiente);
             setPresupuestoAprobado(presupuestoAprobado);
-
-
-
+            setGastosPorRubro(combinarPresupuestoYRubros(presupuesto, gastosPorRubro));
           }
         } catch (err) {
           console.log('[DatosGenerales Component] ERROR : ' + err);
@@ -86,6 +87,7 @@ export const Presupuestos = ({ idProyecto }) => {
   const rendering = () => {
     return (
       <>
+
         <div className={$.root}>
           <Grid
             container
@@ -128,10 +130,8 @@ export const Presupuestos = ({ idProyecto }) => {
       </>
     );
   };
-  console.log(presupuesto + "pruebaPresupuesto")
 
-  console.log(presupuestoPendiente + "pruebaPresupuesto")
-  console.log(presupuestoAprobado + "pruebaPresupuesto")
+
   return (
     <>
       <h1 className={$.title}>Presupuesto</h1>
