@@ -32,11 +32,13 @@ const useStyles = makeStyles({
 });
 
 export default function Tabla({ presupuesto, presupuestoPendiente, presupuestoAprobado }) {
-  // console.log(presupuestoPendiente + "pendiente123")
-  //console.log(presupuesto + "presupuesto45");
-  //console.log(presupuestoAprobado + "aprobado233");
+  console.log(presupuestoPendiente + "pendiente123")
+  console.log(presupuesto + "presupuesto45");
+  console.log(presupuestoAprobado + "aprobado233");
 
   const classes = useStyles();
+
+
 
   const datosAConsumir = (({
     tipo,
@@ -81,6 +83,7 @@ export default function Tabla({ presupuesto, presupuestoPendiente, presupuestoAp
     administracion,
     total,
   }))(presupuestoPendiente);
+
   const datosAConsumir3 = (({
 
     tipo,
@@ -147,7 +150,10 @@ export default function Tabla({ presupuesto, presupuestoPendiente, presupuestoAp
                     <TableCell key={idx}>
                       {clave === "tipo" ? value : formatPrice(value ?? 0)}
 
+
+
                     </TableCell>
+
                   );
                 })}
               </TableRow>

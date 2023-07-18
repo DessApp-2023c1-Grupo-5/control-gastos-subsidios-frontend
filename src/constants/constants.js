@@ -98,8 +98,6 @@ export const proyectosEnHistoria = [
 // tabla total de presupuesto actualizada
 export const presupuestoPrueba = {
   tipo: 'Total Presupuesto',
-  fechaInicio: '18/09/2021',
-  fechaFin: '18/09/2022',
   insumos: 100000,
   bibliografia: 100000,
   publicaciones: 100000,
@@ -108,12 +106,13 @@ export const presupuestoPrueba = {
   tecnico: 200000,
   administracion: 200000,
   total: 5000000,
+  // fechaInicio: '18/09/2021',
+  //fechaFin: '18/09/2022',
 };
 
 export const presupuestoPruebaPendiente = {
   tipo: 'Pendiente',
-  fechaInicio: '19/09/2021',
-  fechaFin: '28/09/2022',
+
   insumos: 100000,
   bibliografia: 100000,
   publicaciones: 100000,
@@ -122,12 +121,13 @@ export const presupuestoPruebaPendiente = {
   tecnico: 200000,
   administracion: 200000,
   total: 5000000,
+  //fechaInicio: '19/09/2021',
+  //fechaFin: '28/09/2022',
 };
 
 export const presupuestoPruebaAprobado = {
   tipo: 'Total Aprobado',
-  fechaInicio: '14/09/2021',
-  fechaFin: '12/09/2022',
+
   insumos: 100000,
   bibliografia: 100000,
   publicaciones: 100000,
@@ -136,6 +136,8 @@ export const presupuestoPruebaAprobado = {
   tecnico: 200000,
   administracion: 200000,
   total: 5000000,
+  //fechaInicio: '14/09/2021',
+  //fechaFin: '12/09/2022',
 };
 
 export const reformulacionPrueba = {
