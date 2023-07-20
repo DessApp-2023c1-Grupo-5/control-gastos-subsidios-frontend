@@ -12,7 +12,7 @@ import { getPendiente } from '../services/presupuestos.js';
 import { getAprobado } from '../services/presupuestos.js';
 
 
-import { getAllGastosPorRubro, getComprasByProyecto } from '../services/compras.js';
+import { getAllGastosPorRubroPendiente, getComprasByProyecto } from '../services/compras.js';
 
 import { useState, useEffect } from 'react';
 import Alert from '@material-ui/lab/Alert';
@@ -59,7 +59,7 @@ export const Presupuestos = ({ idProyecto }) => {
 
           const compras = await getComprasByProyecto(idProyecto);
           const gastos = calculateTotalExpenses(compras);
-          const gastosPorRubro = await getAllGastosPorRubro(idProyecto);
+          const gastosPorRubro = await getAllGastosPorRubroPendiente(idProyecto);
           if (isMounted) {
             setTotalGastos(gastos);
             setComprasRealizadas(comprasRealizadas);
