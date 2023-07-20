@@ -10,9 +10,10 @@ import { getPresupuesto } from '../services/presupuestos.js';
 
 import { getPendiente } from '../services/presupuestos.js';
 import { getAprobado } from '../services/presupuestos.js';
+import { getRemanente } from '../services/presupuestos.js';
+      
 
-
-import { getAllGastosPorRubroPendiente, getComprasByProyecto } from '../services/compras.js';
+import { getComprasByProyecto } from '../services/compras.js';
 
 import { useState, useEffect } from 'react';
 import Alert from '@material-ui/lab/Alert';
@@ -23,7 +24,7 @@ import Tabla from './dashboards/Tabla';
 
 
 import Grid from '@material-ui/core/Grid';
-import { calculateTotalExpenses, combinarPresupuestoYRubros } from '../utils/presupuestos';
+import { calculateTotalExpenses } from '../utils/presupuestos';
 
 export const Presupuestos = ({ idProyecto }) => {
   const $ = useStyles();
@@ -37,36 +38,30 @@ export const Presupuestos = ({ idProyecto }) => {
 
   const [comprasRealizadas, setComprasRealizadas] = useState(null);
   const [totalGastos, setTotalGastos] = useState(null);
-  const [gastosPorRubro, setGastosPorRubro] = useState(null);
+  const [remanente, setRemanente] = useState(null);
 
-  console.log(gastosPorRubro)
 
   useEffect(() => {
     let isMounted = true;
     async function fetchProyectos() {
       if (idProyecto)
         try {
-          const proyecto = await getProyectoById(idProyecto); //Tiene que ser por ID la busqueda
-
-
-
-
+          //const proyecto = await getProyectoById(idProyecto); //Tiene que ser por ID la busqueda
           const presupuesto = await getPresupuesto();
-
-          const presupuestoPendiente = await getPendiente();
-          const presupuestoAprobado = await getAprobado();
-
+          const presupuestoPendiente = await getPendiente(idProyecto);
+          const presupuestoAprobado = await getAprobado(idProyecto);
+          const remanente = await getRemanente(presupuesto,idProyecto)
 
           const compras = await getComprasByProyecto(idProyecto);
           const gastos = calculateTotalExpenses(compras);
-          const gastosPorRubro = await getAllGastosPorRubroPendiente(idProyecto);
           if (isMounted) {
             setTotalGastos(gastos);
             setComprasRealizadas(comprasRealizadas);
             setPresupuesto(presupuesto);
             setPresupuestoPendiente(presupuestoPendiente);
             setPresupuestoAprobado(presupuestoAprobado);
-            setGastosPorRubro(combinarPresupuestoYRubros(presupuesto, gastosPorRubro));
+            setRemanente(remanente)
+          //  setGastosPorRubro(combinarPresupuestoYRubros(presupuesto, gastosPorRubro));
           }
         } catch (err) {
           console.log('[DatosGenerales Component] ERROR : ' + err);
@@ -106,6 +101,7 @@ export const Presupuestos = ({ idProyecto }) => {
                 xl={6}
                 totalPresupuesto={presupuesto.total}
                 totalGastos={totalGastos}
+                remanente = {remanente}
               />
               <Card className={$.card}>
                 <CardContent>
@@ -137,7 +133,7 @@ export const Presupuestos = ({ idProyecto }) => {
       <h1 className={$.title}>Presupuesto</h1>
       <div className={$.root}>
         <Divider className={$.divider} />
-        {presupuesto ? rendering() : loadingRendering()}
+        {(presupuesto && presupuestoPendiente && presupuestoAprobado) ? rendering() : loadingRendering()}
 
 
       </div>

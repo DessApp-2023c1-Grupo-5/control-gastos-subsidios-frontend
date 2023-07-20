@@ -10,12 +10,12 @@ import {
   BarChart,
 } from '@material-ui/icons';
 
-export default function CardMontos({ totalGastos, totalPresupuesto }) {
+export default function CardMontos({ totalGastos, totalPresupuesto ,remanente}) {
   const $ = useStyles();
 
   const monto = montoDisponible(totalPresupuesto, totalGastos)
   const ejecucion = nivelDeEjecucion(totalPresupuesto, totalGastos);
-  const remanente = totalPresupuesto - (100 + 50);
+  //const remanente = totalPresupuesto - (100 + 50);
 
 
   return (

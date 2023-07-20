@@ -30,7 +30,7 @@ export const DatosGenerales = ({ idProyecto }) => {
             setProyecto(proyecto[0]);
           }
         } catch (err) {
-          console.log('[DatosGenerales Component] ERROR : ' + err);
+          ('[DatosGenerales Component] ERROR : ' + err);
         }
       else {
         return window.history.back();

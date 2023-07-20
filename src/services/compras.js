@@ -96,8 +96,8 @@ export async function putCompra(id, body) {
   return response;
 }
 
-export async function getAllGastosPorRubroPendiente(idProyecto) {
-  const EXTRA_PATH = '/getCompraTotal';
+export async function getAllGastosPorRubroAprobado(idProyecto) {
+  const EXTRA_PATH = '/getCompraTotalAprobada';
   const endpoint = `${SERVICES_CONFIG.baseUrl}${SERVICES_CONFIG.port}${SERVICES_CONFIG.path}${EXTRA_PATH}/${idProyecto}`;
   const response = await fetch(endpoint, {
     method: 'GET', // *GET, POST, PUT, DELETE, etc.
@@ -112,8 +112,8 @@ export async function getAllGastosPorRubroPendiente(idProyecto) {
   return response.json();
 }
 
-export async function getAllGastosPorRubroAprob(idProyecto) {
-  const EXTRA_PATH = '/getCompraTotal';
+export async function getAllGastosPorRubroPendiente(idProyecto) {
+  const EXTRA_PATH = '/getCompraTotalPendienteOtro';
   const endpoint = `${SERVICES_CONFIG.baseUrl}${SERVICES_CONFIG.port}${SERVICES_CONFIG.path}${EXTRA_PATH}/${idProyecto}`;
   const response = await fetch(endpoint, {
     method: 'GET', // *GET, POST, PUT, DELETE, etc.

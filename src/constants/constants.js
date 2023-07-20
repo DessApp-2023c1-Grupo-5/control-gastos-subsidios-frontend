@@ -105,39 +105,33 @@ export const presupuestoPrueba = {
   equipamiento: 200000,
   tecnico: 200000,
   administracion: 200000,
-  total: 5000000,
+  total: 4000000,
   // fechaInicio: '18/09/2021',
   //fechaFin: '18/09/2022',
 };
 
 export const presupuestoPruebaPendiente = {
-  tipo: 'Pendiente',
-
-  insumos: 100000,
-  bibliografia: 100000,
-  publicaciones: 100000,
-  viaticos: 100000,
-  equipamiento: 200000,
-  tecnico: 200000,
-  administracion: 200000,
-  total: 5000000,
-  //fechaInicio: '19/09/2021',
-  //fechaFin: '28/09/2022',
+  tipo: 'Total Pendiente',
+  insumos: 0,
+  bibliografia: 0,
+  publicaciones: 0,
+  viaticos: 0,
+  equipamiento: 0,
+  tecnico: 0,
+  administracion: 0,
+  total: 0,
 };
 
 export const presupuestoPruebaAprobado = {
   tipo: 'Total Aprobado',
-
-  insumos: 100000,
-  bibliografia: 100000,
-  publicaciones: 100000,
-  viaticos: 100000,
-  equipamiento: 200000,
-  tecnico: 200000,
-  administracion: 200000,
-  total: 5000000,
-  //fechaInicio: '14/09/2021',
-  //fechaFin: '12/09/2022',
+  insumos: 0,
+  bibliografia: 0,
+  publicaciones: 0,
+  viaticos: 0,
+  equipamiento: 0,
+  tecnico: 0,
+  administracion: 0,
+  total: 0,
 };
 
 export const reformulacionPrueba = {
